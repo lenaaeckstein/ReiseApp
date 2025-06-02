@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ReiseApp.MainPage">
+
+    <FlexLayout Direction="Column">
+        <VerticalStackLayout Padding="10" FlexLayout.Basis="40%" BackgroundColor="Beige">
+            <Entry x:Name="vornameEntryField" Placeholder="Name" />
+            <Entry x:Name="nachnameEntryField" Placeholder="Email" />
+            <Entry x:Name="ortEntryField" Placeholder="Mobile" />
+            <Entry x:Name="datumEntryField" Placeholder="Mobile" />
+            <Button x:Name="saveButton" Text="Save" Clicked="saveButton" />
+
+        </VerticalStackLayout>
+
+        <VerticalStackLayout>
+            <ListView x:Name="listView" FlexLayout.Grow="1" HasUnevenRows="True" ItemTapped="ListView_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <VerticalStackLayout Padding="5">
+                                <Label Text="{Binding CustomerName}" FontSize="17" FontAttributes="Bold" />
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Text="{Binding Email}" />
+                                    <!-- Hier könntest du noch weitere Labels einfügen -->
+                                </Grid>
+                            </VerticalStackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+    </FlexLayout>
+
+
+</ContentPage>
