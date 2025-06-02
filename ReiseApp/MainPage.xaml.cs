@@ -41,6 +41,7 @@ public partial class MainPage : ContentPage
             _editReiseId = 0;
         }
 
+
         vornameEntryField.Text=string.Empty;
         nachnameEntryField.Text = string.Empty;
         ortEntryField.Text= string.Empty;
