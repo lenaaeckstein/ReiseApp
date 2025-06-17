@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:viewmodels="clr-namespace:ReiseApp.Core.ViewModels;assembly=ReiseApp.Core"
+             xmlns:models="clr-namespace:ReiseApp.Data.Models;assembly=ReiseApp.Data"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:DataType="viewmodels:ReiseViewModel"
+             x:Class="ReiseApp.Gui.MainPage">
+
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior
+            EventName="Appearing"
+            Command="{Binding LoadCommand}" />
+    </ContentPage.Behaviors>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Delete all Items" IconImageSource="trash.png" Command="{Binding DeleteAllCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <CollectionView ItemsSource="{Binding Reise}" Margin="10">
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="models:Reise">
+                <Frame Padding="10" BackgroundColor="LightGray" Margin="5" CornerRadius="8">
+                    <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center">
+                        <StackLayout Grid.Column="0" Spacing="2">
+                            <Label Text="{Binding Ort}" FontSize="18" FontAttributes="Bold" />
+                            <Label Text="{Binding Nachname}" FontSize="16" />
+                            <Label Text="{Binding Datum, StringFormat='dd.MM.yyyy'}" FontSize="14" TextColor="Gray" />
+                        </StackLayout>
+
+                        <Image Grid.Column="1" Source="trash.png" HeightRequest="24" WidthRequest="24" VerticalOptions="Center">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:ReiseViewModel}}, Path=DeleteCommand}"
+                                                      CommandParameter="{Binding .}" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+                </Frame>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+
+</ContentPage>

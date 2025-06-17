@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ReiseApp.Gui.pages.AddPage"
+             Title="Reise eintragen"
+             Padding="20">
+
+    <Grid RowSpacing="15" ColumnSpacing="10"
+          RowDefinitions="Auto,Auto,Auto,Auto"
+          ColumnDefinitions="Auto,*">
+
+        <!-- Datum -->
+        <Label Text="Datum:" Grid.Row="0" Grid.Column="0" VerticalOptions="Center" FontAttributes="Bold"/>
+        <DatePicker Grid.Row="0" Grid.Column="1" Format="yyyy-MM-dd" Date="{Binding SelectedDate}" />
+
+        <!-- Ort -->
+        <Label Text="Ort:" Grid.Row="1" Grid.Column="0" VerticalOptions="Center" FontAttributes="Bold"/>
+        <Entry Grid.Row="1" Grid.Column="1" Text="{Binding Ort}" Placeholder="Reiseort eingeben" />
+
+        <!-- Nachname -->
+        <Label Text="Nachname:" Grid.Row="2" Grid.Column="0" VerticalOptions="Center" FontAttributes="Bold"/>
+        <Entry Grid.Row="2" Grid.Column="1" Text="{Binding Nachname}" Placeholder="Nachname eingeben" />
+
+        <!-- Speichern Button -->
+        <Button Text="Speichern" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
+                Command="{Binding SaveCommand}"
+                HorizontalOptions="Fill" />
+    </Grid>
+</ContentPage>

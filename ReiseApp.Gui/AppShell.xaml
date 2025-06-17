@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="ReiseApp.Gui.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:ReiseApp.Gui"
+    xmlns:pages="clr-namespace:ReiseApp.Gui.pages"
+    Shell.FlyoutBehavior="Disabled"
+    Title="ReiseApp.Gui">
+
+    <TabBar>
+        <ShellContent
+        Title="Reiseliste"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+
+        <ShellContent
+        Title="Betrag hinzufügen"
+        ContentTemplate="{DataTemplate pages:AddPage}"
+        Route="AddPage" />
+    </TabBar>
+    
+</Shell>
